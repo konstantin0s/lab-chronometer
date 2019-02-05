@@ -72,16 +72,11 @@ minDec.innerHTML = "0" + minutes;
 
 btnRight.addEventListener("click", function() {
          var li = document.createElement("li");
-        //  console.log(twoDigits(seconds));
-         li.innerHTML = twoDigits(minutes) + ":" + twoDigits(seconds);
+         li.innerHTML = seconds + ":" + minutes;
           addSplits.appendChild(li);      
   // if ()
 });
 
-
-  // if (btnRight.classList.contains("btn reset")) {
-  //   reset();
-  // }
 
 function reset() {
     clearInterval(intervalRef);

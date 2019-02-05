@@ -76,7 +76,7 @@ btnRight.addEventListener("click", function() {
           addSplits.appendChild(li);
           
           var testClass =  document.getElementById('btnRight').value;
-          // console.log(testClass);
+          console.log(testClass);
           // if () {
           //   btnRight.classList.contains(testClass);
           //   reset();

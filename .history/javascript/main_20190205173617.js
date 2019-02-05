@@ -73,17 +73,11 @@ minDec.innerHTML = "0" + minutes;
 btnRight.addEventListener("click", function() {
          var li = document.createElement("li");
          li.innerHTML = twoDigits(minutes) + ":" + twoDigits(seconds);
-          addSplits.appendChild(li);
-          
-          var testClass =  document.getElementById('btnRight').value;
-          // console.log(testClass);
-          // if () {
-          //   btnRight.classList.contains(testClass);
-          //   reset();
-          // }
+          addSplits.appendChild(li);      
+          var testClass =  document.getElementsByClassName('btn reset');
 
-         
-          // reset();
+          btnRight.classList.contains(testClass).reset();
+          reset();
 
 });
 

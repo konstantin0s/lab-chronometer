@@ -75,12 +75,11 @@ btnRight.addEventListener("click", function() {
          li.innerHTML = twoDigits(minutes) + ":" + twoDigits(seconds);
           addSplits.appendChild(li);
           
-          var testClass =  document.getElementById('btnRight').value;
-          // console.log(testClass);
-          // if () {
-          //   btnRight.classList.contains(testClass);
-          //   reset();
-          // }
+          var testClass =  document.getElementsByClassName('btn reset').value;
+          if () {
+            btnRight.classList.contains(testClass);
+            reset();
+          }
 
          
           // reset();

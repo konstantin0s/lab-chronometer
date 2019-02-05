@@ -7,8 +7,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-var addSplits   = document.getElementById('splits');
-var recordBtn   = document.getElementById('btn split');
+var splits      = document.getElementById('splits');
 
 
 var currentTime = 0; //takes split time..
@@ -24,19 +23,11 @@ function twoDigits(number) {
   return number;
 }
 
-// recordBtn.addEventListener("click", function() {
-//           var li = document.createElement("li");
-//           li.appendChild(currentTime);
-//            splits.appendChild(li);
-// });
-
-
 var intervalRef = null;
 
 //add 00 on the html before starts counting.
 secDec.innerHTML = "0" + seconds;
 minDec.innerHTML = "0" + minutes;
-
 
  btnLeft.addEventListener("click", function(event) {
       if (intervalId == 0) { //start if pause
@@ -47,19 +38,13 @@ minDec.innerHTML = "0" + minutes;
          btnLeft.innerHTML = "STOP";
          btnLeft.setAttribute("class", "btn stop");
          btnRight.setAttribute("class", "btn split");
-         btnRight.innerHTML = "SPLIT"; 
-        //  $(document).on('click', btnRight,function(){
-        //   var li = document.createElement("li");
-        //   const recMinDe = seconds;
-        //   console.log(recMinDe);
-        // //   const recMinUn = ;
-        //   const recSecDe = minutes;
-        //   console.log(recSecDe);
-         
-        // //   const recSecUn = ;
-        //   addSplits.appendChild(li);      
-        // });
-
+         btnRight.innerHTML = "SPLIT";
+        //  if ( btnRight == "split") {
+                var li = document.createElement("li");
+                li.appendChild(currentTime);
+                 splits.appendChild(li);
+        //     
+        //  }
       if (seconds === 60) {
          seconds = 0;
          minutes++;
@@ -82,12 +67,8 @@ minDec.innerHTML = "0" + minutes;
 });
 
 btnRight.addEventListener("click", function() {
-         var li = document.createElement("li");
-         li.innerHTML = seconds + ":" + minutes;
-          addSplits.appendChild(li);      
-  // console.log("STATE", seconds)
+  reset();
 });
-
 
 function reset() {
     clearInterval(intervalRef);

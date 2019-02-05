@@ -86,6 +86,7 @@ btnRight.addEventListener("click", function() {
          li.innerHTML = seconds + ":" + minutes;
           addSplits.appendChild(li);      
   // console.log("STATE", seconds)
+  reset();
 });
 
 

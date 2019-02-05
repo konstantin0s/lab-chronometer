@@ -37,7 +37,6 @@ var intervalRef = null;
 secDec.innerHTML = "0" + seconds;
 minDec.innerHTML = "0" + minutes;
 
-
  btnLeft.addEventListener("click", function(event) {
       if (intervalId == 0) { //start if pause
          intervalRef = setInterval(function() {
@@ -48,16 +47,16 @@ minDec.innerHTML = "0" + minutes;
          btnLeft.setAttribute("class", "btn stop");
          btnRight.setAttribute("class", "btn split");
          btnRight.innerHTML = "SPLIT"; 
+         console.log(seconds);
+         console.log(minutes)
         //  $(document).on('click', btnRight,function(){
         //   var li = document.createElement("li");
-        //   const recMinDe = seconds;
-        //   console.log(recMinDe);
-        // //   const recMinUn = ;
-        //   const recSecDe = minutes;
-        //   console.log(recSecDe);
-         
-        // //   const recSecUn = ;
-        //   addSplits.appendChild(li);      
+          const recMinDe = seconds;
+          console.log(recMinDe);
+        //   const recMinUn = ;
+        //   const recSecDe = ;
+        //   const recSecUn = ;
+        //   // addSplits.appendChild(li);      
         // });
 
       if (seconds === 60) {
@@ -82,12 +81,8 @@ minDec.innerHTML = "0" + minutes;
 });
 
 btnRight.addEventListener("click", function() {
-         var li = document.createElement("li");
-         li.innerHTML = seconds + ":" + minutes;
-          addSplits.appendChild(li);      
-  // console.log("STATE", seconds)
+  reset();
 });
-
 
 function reset() {
     clearInterval(intervalRef);

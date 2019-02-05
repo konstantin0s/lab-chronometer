@@ -82,12 +82,9 @@ minDec.innerHTML = "0" + minutes;
 });
 
 btnRight.addEventListener("click", function() {
-         var li = document.createElement("li");
-         li.innerHTML = seconds + ":" + minutes;
-          addSplits.appendChild(li);      
-  // console.log("STATE", seconds)
+  console.log("STATE", seconds)
+  reset();
 });
-
 
 function reset() {
     clearInterval(intervalRef);

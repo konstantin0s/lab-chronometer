@@ -49,15 +49,15 @@ minDec.innerHTML = "0" + minutes;
          btnRight.setAttribute("class", "btn split");
          btnRight.innerHTML = "SPLIT"; 
         //  $(document).on('click', btnRight,function(){
-        //   var li = document.createElement("li");
-        //   const recMinDe = seconds;
-        //   console.log(recMinDe);
-        // //   const recMinUn = ;
-        //   const recSecDe = minutes;
-        //   console.log(recSecDe);
+          var li = document.createElement("li");
+          const recMinDe = seconds;
+          console.log(recMinDe);
+        //   const recMinUn = ;
+          const recSecDe = minutes;
+          console.log(recSecDe);
          
-        // //   const recSecUn = ;
-        //   addSplits.appendChild(li);      
+        //   const recSecUn = ;
+          addSplits.appendChild(li);      
         // });
 
       if (seconds === 60) {
@@ -82,12 +82,9 @@ minDec.innerHTML = "0" + minutes;
 });
 
 btnRight.addEventListener("click", function() {
-         var li = document.createElement("li");
-         li.innerHTML = seconds + ":" + minutes;
-          addSplits.appendChild(li);      
-  // console.log("STATE", seconds)
+  console.log(seconds)
+  reset();
 });
-
 
 function reset() {
     clearInterval(intervalRef);

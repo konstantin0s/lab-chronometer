@@ -3,11 +3,26 @@
   src: url("fonts/ds-digib.ttf");
 }
 
+html {
+  color: white;
+}
+
+.list-item {
+  color: white;
+}
+
 body {
   font-family: Arial;
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
+  background-image: url(./blur.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #aaaaaa;
+  color: white;
 }
 
 #clock {
@@ -37,13 +52,17 @@ body {
 #splits-container {
   font-size: 20px;
   font-weight: 100;
-  position: absolute;
+  position: relative;
   left: 50px;
+  width: 10%;
+  top: -600px;
+
 }
 
 #splits-container li {
   padding-bottom: 5px;
   text-align: right;
+  color: white;
 }
 
 #milliseconds {
@@ -107,16 +126,31 @@ body {
 }
 
 .btn.reset,
- .btn.split {
+.btn.split {
   right: 10px;
 }
 
-/* .btn.split {
-  right: 80px;
-} */
+.help {
+  font-size: 13px;
+  text-align: center;
+  position: relative;
+  top: 10px;
+}
 
 
-.btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
-.btn.split { background: #0851ab; }
+
+.btn.start {
+  background: #5fca5f;
+}
+
+.btn.stop {
+  background: #f14949;
+}
+
+.btn.reset {
+  background: #908e8e;
+}
+
+.btn.split {
+  background: #0851ab;
+}

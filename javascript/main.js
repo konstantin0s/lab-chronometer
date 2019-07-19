@@ -1,20 +1,28 @@
 // var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
-var addSplits   = document.getElementById('splits');
-var recordBtn   = document.getElementById('btn split');
+var btnLeft = document.getElementById('btnLeft');
+var btnRight = document.getElementById('btnRight');
+var minDec = document.getElementById('minDec');
+var minUni = document.getElementById('minUni');
+var secDec = document.getElementById('secDec');
+var secUni = document.getElementById('secUni');
+var milDec = document.getElementById('milDec');
+var milUni = document.getElementById('milUni');
+var addSplits = document.getElementById('splits');
+var recordBtn = document.getElementById('btn split');
+var listItem = document.getElementsByClassName('list-item');
 
 
 var currentTime = 0; //takes split time..
 var intervalId = 0;  //0stop; 1 running.
-var seconds= 0;
+var seconds = 0;
 var minutes = 0;
+var miliseconds = 0;
+var intervalRef = null;
+
+//add 00 on the html before starts counting.
+secDec.innerHTML = "0" + seconds;
+minDec.innerHTML = "0" + minutes;
+milDec.innerHTML = miliseconds;
 
 
 function twoDigits(number) {
@@ -24,78 +32,76 @@ function twoDigits(number) {
   return number;
 }
 
-// recordBtn.addEventListener("click", function() {
-//           var li = document.createElement("li");
-//           li.appendChild(currentTime);
-//            splits.appendChild(li);
-// });
+btnLeft.addEventListener("click", function (event) {
+  if (intervalId == 0) { //start if pause
+    intervalRef = setInterval(function () {
+      intervalId = 1;
+      miliseconds++;
+      milDec.innerHTML = twoDigits(miliseconds);
+      seconds++;
+      secDec.innerHTML = twoDigits(seconds);
+      btnLeft.innerHTML = "STOP";
+      btnLeft.setAttribute("class", "btn stop");
+      btnRight.setAttribute("class", "btn split");
+      btnRight.innerHTML = "SPLIT";
 
-
-var intervalRef = null;
-
-//add 00 on the html before starts counting.
-secDec.innerHTML = "0" + seconds;
-minDec.innerHTML = "0" + minutes;
-
-
- btnLeft.addEventListener("click", function(event) {
-      if (intervalId == 0) { //start if pause
-         intervalRef = setInterval(function() {
-         intervalId = 1;
-         seconds++;
-         secDec.innerHTML = twoDigits(seconds);
-         btnLeft.innerHTML = "STOP";
-         btnLeft.setAttribute("class", "btn stop");
-         btnRight.setAttribute("class", "btn split");
-         btnRight.innerHTML = "SPLIT"; 
+      if (miliseconds === 60) {
+        miliseconds = 0;
+        milDec.innerHTML = twoDigits(miliseconds)
+      }
 
       if (seconds === 60) {
-         seconds = 0;
-         minutes++;
-         minDec.innerText = twoDigits(minutes);
-         secDec.innerText = "0" + seconds;
-      if (minDec === 60) {
-         minutes = 0;
-         }
+        seconds = 0;
+        minutes++;
+        minDec.innerText = twoDigits(minutes);
+        secDec.innerText = "0" + seconds;
+        if (minDec === 60) {
+          minutes = 0;
+        }
       }
- 
     }, 100);
-  }  else { //pause if started
-       clearInterval(intervalRef);  //pause chronometer
-       btnLeft.innerHTML = "START";
-       btnRight.innerHTML = "RESET";
-       btnLeft.setAttribute("class", "btn start");
-       btnRight.setAttribute("class", "btn reset");
-       intervalId = 0; // continue chronometer from it's pause point.
+  } else { //pause if started
+    clearInterval(intervalRef);  //pause chronometer
+    btnLeft.innerHTML = "START";
+    btnRight.innerHTML = "RESET";
+    btnLeft.setAttribute("class", "btn start");
+    btnRight.setAttribute("class", "btn reset");
+    intervalId = 0; // continue chronometer from it's pause point.
   }
 });
 
-btnRight.addEventListener("click", function() {
-         var li = document.createElement("li");
-         li.innerHTML = twoDigits(minutes) + ":" + twoDigits(seconds);
-          addSplits.appendChild(li);
-          
-          var testClass =  document.getElementById('btnRight').value;
-          // console.log(testClass);
-          // if () {
-          //   btnRight.classList.contains(testClass);
-          //   reset();
-          // }
+btnRight.addEventListener("click", function () {
+  btnRight.style.backgroundColor = "grey";
+  var li = document.createElement("li");
+  li.setAttribute("class", "list-item");
+  li.innerHTML = twoDigits(minutes) + ":" + twoDigits(seconds) + ":" + twoDigits(miliseconds);
+  addSplits.appendChild(li);
 
-         
-          // reset();
-
+  var testClass = document.getElementById('btnRight');
+  console.log(testClass);
+  if (testClass.classList.contains("reset")) {
+    if (!testClass.classList.contains("split")) {
+      reset();
+    }
+  }
 });
 
 function reset() {
-    clearInterval(intervalRef);
-    intervalId = 0;
-    seconds = 0;
-    minutes = 0;
-    btnLeft.innerHTML = "START";
-    // sets values of them to 00 after reset
-    minDec.innerHTML = "0" + minutes;  
-    secDec.innerHTML = "0" + seconds;
+  clearInterval(intervalRef);
+  intervalId = 0;
+  milisecods = 0;
+  seconds = 0;
+  minutes = 0;
+  btnLeft.innerHTML = "START";
+
+  // sets values of them to 00 after reset
+  minDec.innerHTML = "0" + minutes;
+  secDec.innerHTML = "0" + seconds;
+  milDec.innerHTML = milisecods;
+  listItem.innerHTML = 0;
+  timedRefresh(2000);
 }
 
-
+function timedRefresh(timeoutPeriod) {
+  setTimeout("location.reload(true);", timeoutPeriod);
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +9,24 @@
   <link rel="stylesheet" href="stylesheets/styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
 
-  <section id="splits-container">
-    <h3>Splits</h3>
-    <ol id="splits">
-    </ol>
-  </section>
+<body>
+  <div class="row">
+    <h6 class="help">
+      Be aware that after you press <strong>RESET</strong>
+      button, split time saved will be erased.
+    </h6>
+  </div>
 
   <div class="leash leash-top"></div>
 
   <section id="clock">
     <div id="sphere">
-      <span id="minDec" class="number">0</span><span id="minUni" class="number"></span><span>:</span><span id="secDec" class="number"></span><span id="secUni" class="number"></span>
+      <span id="minDec" class="number">0</span><span id="minUni" class="number"></span><span>:</span><span id="secDec"
+        class="number"></span><span id="secUni" class="number"></span>
 
       <div id="milliseconds">
-        <span id="milDec">0</span><span id="milUni">0</span>
+        <span id="milDec">0</span><span id="milUni"></span>
       </div>
 
       <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
@@ -36,11 +39,17 @@
     <div class="hole"></div>
   </div>
 
+  <section id="splits-container">
+    <h3 class="tex-center">Splits List:</h3>
+    <ol id="splits">
+    </ol>
+  </section>
+
 
   <!-- <script src="javascripts/utils.js"></script>
-  <script src="javascripts/chronometer.js"></script>
-  <script src="javascripts/main.js"></script> -->
+  -->
   <script src="javascript/chronometer.js"></script>
   <script src="javascript/main.js"></script>
 </body>
+
 </html>
